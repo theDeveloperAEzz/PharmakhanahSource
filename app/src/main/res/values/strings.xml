@@ -1,0 +1,93 @@
+<resources>
+    <string name="app_name">Pharmakhanah</string>
+        <string name="action_settings">Settings</string>
+        <string name="section_format">Hello World from section: %1$d</string>
+
+        <!-- TODO: Remove or change this placeholder text -->
+        <string name="hello_blank_fragment">Hello blank fragment</string>
+        <string name="title_activity_main2">Main2Activity</string>
+        <string-array name="arabicGov">
+
+            <item> الإسكندرية</item>
+            <item>الإسماعيلية</item>
+            <item>أسوان</item>
+            <item>أسيوط</item>
+            <item>الأقصر</item>
+            <item>البحر الأحمر</item>
+            <item>البحيرة</item>
+            <item>بني سويف</item>
+            <item>بورسعيد</item>
+            <item>جنوب سيناء</item>
+            <item>الجيزة</item>
+            <item>الدقهلية</item>
+            <item>دمياط</item>
+            <item>سوهاج</item>
+            <item>السويس</item>
+            <item>الشرقية</item>
+            <item>شمال سيناء</item>
+            <item>الغربية</item>
+            <item>الفيوم</item>
+            <item>القاهرة</item>
+            <item>القليوبية</item>
+            <item>قنا</item>
+            <item>كفر الشيخ</item>
+            <item>مطروح</item>
+            <item>المنوفية</item>
+            <item>المنيا</item>
+            <item>الوادي الجديد</item>
+        </string-array>
+        <string-array name="englishGov">
+            <item>Alexandria</item>
+            <item>Aswan</item>
+            <item>Asyut</item>
+            <item>Beheira</item>
+            <item>Beni Suef</item>
+            <item>Cairo</item>
+            <item>Dakahlia</item>
+            <item>Damietta</item>
+            <item>Faiyum</item>
+            <item>Gharbia</item>
+            <item>Giza</item>
+            <item>Ismailia</item>
+            <item>Kafr ElSheikh</item>
+            <item>Luxor</item>
+            <item>Matruh</item>
+            <item>Minya</item>
+            <item>Monufia</item>
+            <item>New Valley</item>
+            <item>North Sinai</item>
+            <item>Port Said</item>
+            <item>Qalyubia</item>
+            <item>Qena</item>
+            <item>Red Sea</item>
+            <item>Sharqia</item>
+            <item>Sohag</item>
+            <item>South Sinai</item>
+            <item>Suez</item>
+        </string-array>
+    <string name="com.twitter.sdk.android.CONSUMER_KEY" translatable="false">AFeSI9OX3uyUjvFmJwOGBmq98</string>
+    <string name="com.twitter.sdk.android.CONSUMER_SECRET" translatable="false">hWwp3lvwYdRf98IsQIgHMgsUTAuIVmm62SZP3UHlIP0nQAZKIL</string>
+    <string name="you_have_not_posts_yet">you have not posts yet.</string>
+    <string name="phone_hint">01-000000000</string>
+    <string name="click_to_change_your_photo">click to change your photo.</string>
+    <string name="edit">edit</string>
+    <string name="no_posts_added_yet">no posts added yet.</string>
+    <string name="no_chats_yet">no chats yet.</string>
+    <string name="no_notifications_yet">no notifications yet.</string>
+    <string name="you_havent_set_photo_yet">you haven\'t set photo yet</string>
+    <string name="check_internet_connection">check internet connection</string>
+    <string name="city_edit">city </string>
+    <string name="username">UserName</string>
+    <string name="edit_your_information">Edit your Information</string>
+    <string name="chose_your_city">chose your city</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="sign_up">Sign up</string>
+    <string name="or">or</string>
+    <string name="fb">fb</string>
+    <string name="tw">tw</string>
+    <string name="g">g+</string>
+    <string name="long_click_to_delete">long click to delete</string>
+</resources>
+
+

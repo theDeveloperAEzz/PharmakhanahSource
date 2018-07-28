@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_signup"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="18dp"
+    android:paddingRight="18dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:fitsSystemWindows="true"
+    tools:context=".activity.SignUpActivity">
+
+    <ProgressBar
+        android:id="@+id/progressbar_sign_up"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-7dp"
+        android:backgroundTint="#FFF"
+        android:indeterminate="true"
+        android:indeterminateTint="#1a09d6"
+        android:max="100"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/txt_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/logo"
+                android:layout_width="150dp"
+                android:layout_height="110dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/logopharmakhana"
+                app:civ_border_color="#FF000000"
+
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="-1"
+                tools:ignore="RtlCompat" />
+
+            <FrameLayout
+                android:id="@+id/frame1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/logo"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:ignore="UselessParent">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/txt_input1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:textColorHint="#FFF">
+
+                        <EditText
+                            android:id="@+id/edit_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:background="@drawable/selectorbgedit"
+                            android:hint="@string/email"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1"
+                            android:gravity="start"
+                            android:padding="8dp"
+                            android:textCursorDrawable="@drawable/bginputcursor"
+                            android:textSize="15sp" />
+                    </android.support.design.widget.TextInputLayout>
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/txt_input2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_input1"
+                        android:layout_marginTop="10dp"
+                        android:textColorHint="#FFF">
+
+                        <EditText
+                            android:id="@+id/edit_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:background="@drawable/selectorbgedit"
+                            android:hint="@string/password"
+                            android:gravity="start"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:padding="8dp"
+                            android:textCursorDrawable="@drawable/bginputcursor"
+                            android:textSize="15sp" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/txt_input3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_input2"
+                        android:layout_marginTop="10dp"
+                        android:textColorHint="#FFF">
+
+                        <EditText
+                            android:id="@+id/edit_confirm_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:background="@drawable/selectorbgedit"
+                            android:hint="Confirm Password"
+                            android:gravity="start"
+                            android:inputType="textPassword"
+                            android:padding="8dp"
+                            android:textCursorDrawable="@drawable/bginputcursor"
+                            android:textSize="15sp"
+                            tools:ignore="HardcodedText" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                        android:id="@+id/city_spinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/txt_input3"
+                        android:layout_marginTop="10dp"
+                        android:hint="@string/chose_your_city"
+                        android:textColorHint="#FFF"
+                        app:met_floatingLabel="normal"
+                        android:layout_alignParentStart="true">
+
+
+                    </com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner>
+
+                    <Button
+                        android:id="@+id/btn_sign_up"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/city_spinner"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/btn_bg"
+                        android:padding="10dp"
+                        android:text="@string/sign_up"
+                        android:textColor="@color/red"
+                        android:textSize="18sp" />
+                    <TextView
+                        android:id="@+id/txtor"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btn_sign_up"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/or"
+                        android:textColor="#fff"
+                        android:textSize="15sp"
+                        tools:ignore="RtlCompat" />
+
+                    <View
+                        android:id="@+id/view1"
+                        android:layout_width="match_parent"
+                        android:layout_height="1.5dp"
+                        android:layout_alignBottom="@id/txtor"
+                        android:layout_alignStart="@id/btn_sign_up"
+                        android:layout_marginEnd="2dp"
+                        android:layout_toStartOf="@id/txtor"
+                        android:background="#fff"
+                        tools:ignore="RtlCompat" />
+
+
+
+
+                    <View
+                        android:id="@+id/view2"
+                        android:layout_width="match_parent"
+                        android:layout_height="1.5dp"
+                        android:layout_alignBottom="@id/txtor"
+                        android:layout_alignEnd="@id/btn_sign_up"
+                        android:layout_marginStart="2dp"
+                        android:layout_toEndOf="@+id/txtor"
+                        android:background="#fff"
+                        tools:ignore="RtlCompat" />
+
+                    <Button
+                        android:id="@+id/fb_login"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/txtor"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/btn_fb_bg"
+                        android:padding="10dp"
+                        android:text="@string/fb"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="#fff"
+                        android:textSize="18sp"
+                        tools:ignore="RtlCompat" />
+
+                    <com.twitter.sdk.android.core.identity.TwitterLoginButton
+                        android:id="@+id/twitter_login"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_below="@+id/txtor"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/btn_twitter_bg"
+                        android:padding="10dp"
+                        android:text="@string/tw"
+                        android:clickable="true"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="#fff"
+                        android:textSize="18sp"
+                        tools:ignore="RtlCompat"
+                        android:focusable="true" />
+
+                    <Button
+                        android:id="@+id/gmail_login"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_below="@+id/txtor"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/btn_gmail_bg"
+                        android:gravity="top"
+                        android:padding="10dp"
+                        android:text="@string/g"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="#fff"
+                        android:textSize="18sp"
+                        tools:ignore="RtlCompat" />
+
+                </RelativeLayout>
+
+            </FrameLayout>
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+</LinearLayout>

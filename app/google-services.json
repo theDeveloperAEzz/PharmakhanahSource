@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "571452649884",
+    "firebase_url": "https://pharmakhanahsource.firebaseio.com",
+    "project_id": "pharmakhanahsource",
+    "storage_bucket": "pharmakhanahsource.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571452649884:android:98c39ad1739f0af1",
+        "android_client_info": {
+          "package_name": "com.example.hp.pharmakhanahsource"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "571452649884-0676d2cv8fb6sgf9dmudfcee5eaetkv1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hp.pharmakhanahsource",
+            "certificate_hash": "13c752e06405ae5b043e868a2d7b6ef92263918a"
+          }
+        },
+        {
+          "client_id": "571452649884-bcg5k9am5k3bjqe6m4at642jsae0pr4k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5l_5sEzdGOG4TfeT1RGHVawQRMSCIC1Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "571452649884-bcg5k9am5k3bjqe6m4at642jsae0pr4k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
