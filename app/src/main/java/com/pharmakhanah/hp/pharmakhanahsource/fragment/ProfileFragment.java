@@ -23,8 +23,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.InputType;
-import android.text.TextUtils;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,10 +41,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -60,7 +56,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.pharmakhanah.hp.pharmakhanahsource.DB.DBHelper;
 import com.pharmakhanah.hp.pharmakhanahsource.R;
-import com.pharmakhanah.hp.pharmakhanahsource.activity.LoginActivity;
 import com.pharmakhanah.hp.pharmakhanahsource.model.UserInformation;
 import com.pharmakhanah.hp.pharmakhanahsource.model.adapters.ProfilePostsAdapter;
 import com.pharmakhanah.hp.pharmakhanahsource.util.Utility;
@@ -88,12 +83,13 @@ public class ProfileFragment extends Fragment {
     TextView textViewUserPhone;
     TextView textViewUserCity;
     EditText editTextUsername, editTextUserPhone;
+    Button editInfoButton, cancelEditInfoButton;
     MaterialBetterSpinner spinnerEditCity;
     ArrayList englishGov;
     ArrayList arabicGov;
     ArrayAdapter adapterSpinner;
-    public static FloatingActionButton fabProfile;
-    Button btnEditPic;
+    public static FloatingActionButton fabEditInformation;
+    Button btnEditPic, btnEditProfile;
     ProgressBar progressBar;
     UserInformation userInformation;
     RecyclerView mRecyclerViewPostsProfile;
@@ -145,7 +141,6 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_profile, container, false);
         initView();
-        fabProfile.setImageResource(R.mipmap.ic_edit);
         dbHelper = new DBHelper(getContext());
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -153,108 +148,118 @@ public class ProfileFragment extends Fragment {
         mTextViewNoPostsProfile.setVisibility(View.INVISIBLE);
         progressBar.setVisibility(View.VISIBLE);
         getUserData();
-        setImageViewProfilePic();
-        setBtnEditPic();
-        setFabProfile();
+        imageViewProfilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setImageViewProfilePic();
+            }
+        });
+        btnEditPic.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        setBtnEditPic();
+                    }
+                });
+        btnEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editInfo();
+            }
+        });
+
         postsProfileArrayList = new ArrayList();
-        postsProfileArrayList.add("kjbjkj");
-        postsProfileArrayList.add("kjbjkj");
-        postsProfileArrayList.add("kjbjkj");
         displayUserPostsList(postsProfileArrayList);
 
         return rootView;
     }
 
     void setBtnEditPic() {
-        btnEditPic.setOnClickListener(
-                new View.OnClickListener() {
-                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-                    @Override
-                    public void onClick(View v) {
-                        if (isOnline()) {
-                            selectImage();
-                            displayUserInformation();
-                        } else {
-                            Toast.makeText(getContext(), R.string.check_internet_connection, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+        if (isOnline()) {
+            selectImage();
+            displayUserInformation();
+        } else {
+            Toast.makeText(getContext(), R.string.check_internet_connection, Toast.LENGTH_SHORT).show();
+        }
     }
 
     void setImageViewProfilePic() {
-        imageViewProfilePic.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
-            @Override
-            public void onClick(View v) {
-                if (!dbHelper.selectUserInformation().get(0).getAvatar().equals("")) {
-                    viewProfilePic();
-                } else if (!textViewProfilePic.getText().equals("")) {
-                    Toast.makeText(getContext(), R.string.you_havent_set_photo_yet, Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
 
+        if (!dbHelper.selectUserInformation().get(0).getAvatar().equals("")) {
+            viewProfilePic();
+        } else if (!textViewProfilePic.getText().equals("")) {
+            Toast.makeText(getContext(), R.string.you_havent_set_photo_yet, Toast.LENGTH_SHORT).show();
+        }
     }
 
-    void setFabProfile() {
-        fabProfile.setOnClickListener(new View.OnClickListener() {
+    void editInfo() {
+        englishGov = new ArrayList();
+        arabicGov = new ArrayList();
+        name = textViewUserName.getText().toString();
+        phone = textViewUserPhone.getText().toString();
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        View dialogView = inflater.inflate(R.layout.alert_edit_information, null);
+        editTextUsername = dialogView.findViewById(R.id.edit_user_name);
+        editTextUserPhone = dialogView.findViewById(R.id.edit_user_phone);
+        spinnerEditCity = dialogView.findViewById(R.id.spinner_edit_city);
+        editInfoButton = dialogView.findViewById(R.id.btn_edit_info);
+        cancelEditInfoButton = dialogView.findViewById(R.id.btn_cancel_edit_ifo);
+        handleSpinner();
+        oldCity = spinnerEditCity.getText().toString();
+        editTextUsername.setText(name);
+        editTextUserPhone.setText(phone);
+        builder.setView(dialogView);
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+        editInfoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                englishGov = new ArrayList();
-                arabicGov = new ArrayList();
-                name = textViewUserName.getText().toString();
-                phone = textViewUserPhone.getText().toString();
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                LayoutInflater inflater = LayoutInflater.from(getContext());
-                View dialogView = inflater.inflate(R.layout.alert_edit_information, null);
-                editTextUsername = dialogView.findViewById(R.id.edit_user_name);
-                editTextUserPhone = dialogView.findViewById(R.id.edit_user_phone);
-                spinnerEditCity = dialogView.findViewById(R.id.spinner_edit_city);
-                handleSpinner();
+                String newName, newPhone;
+                newName = editTextUsername.getText().toString();
+                newPhone = editTextUserPhone.getText().toString();
                 oldCity = spinnerEditCity.getText().toString();
-                editTextUsername.setText(name);
-                editTextUserPhone.setText(phone);
-                //                spinnerEditCity.setText(city);
-                builder.setView(dialogView);
-                builder.setPositiveButton("Reset", new DialogInterface.OnClickListener() {
-                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-                    @Override
-                    public void onClick(final DialogInterface dialog, int which) {
+                if (newName.equals("")) {
+                    editTextUsername.setError("invalid name");
+                    return;
+                }
+                if (newPhone.equals("")) {
+                    editTextUserPhone.setError("invalid phone");
+                    return;
+                }
+                if (city.equals("")) {
+                    spinnerEditCity.setError("choose your city");
+                    return;
+                }
+                if (!newName.equals("") && !newName.equals(name)) {
+                    databaseReference.child("UsersInformation").child("Users")
+                            .child(firebaseAuth.getCurrentUser().getUid()).child("name").setValue(newName);
+                    textViewUserName.setText(newName);
+                }
+                if (!newPhone.equals("") && !newPhone.equals(phone)) {
+                    databaseReference.child("UsersInformation").child("Users")
+                            .child(firebaseAuth.getCurrentUser().getUid()).child("phone").setValue(newPhone);
+                    textViewUserPhone.setText(newPhone);
+                }
+                if (!city.equals("")) {
+                    databaseReference.child("UsersInformation").child("Users")
+                            .child(firebaseAuth.getCurrentUser().getUid()).child("city").setValue(city);
+                    textViewUserCity.setText(city);
 
-                        String newName, newPhone;
-                        newName = editTextUsername.getText().toString();
-                        newPhone = editTextUserPhone.getText().toString();
-                        oldCity = spinnerEditCity.getText().toString();
+                }
 
-                        if (!newName.equals("") && !newName.equals(name)) {
-                            databaseReference.child("UsersInformation").child("Users")
-                                    .child(firebaseAuth.getCurrentUser().getUid()).child("name").setValue(newName);
-                            textViewUserName.setText(newName);
-                        }
-                        if (!newPhone.equals("") && !newPhone.equals(phone)) {
-                            databaseReference.child("UsersInformation").child("Users")
-                                    .child(firebaseAuth.getCurrentUser().getUid()).child("phone").setValue(newPhone);
-                            textViewUserPhone.setText(newPhone);
-                        }
-                        if (!city.equals("")) {
-                            databaseReference.child("UsersInformation").child("Users")
-                                    .child(firebaseAuth.getCurrentUser().getUid()).child("city").setValue(city);
-                            textViewUserCity.setText(city);
-                        }
-
-                        displayUserInformation();
-                        dialog.cancel();
-                    }
-                });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-                builder.show();
+                displayUserInformation();
+                dialog.cancel();
             }
         });
+        cancelEditInfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        });
+
+
     }
 
     public void handleSpinner() {
@@ -294,7 +299,6 @@ public class ProfileFragment extends Fragment {
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     void getUserData() {
         if (dbHelper.selectUserInformation().size() != 0) {
             getAndReviewLocaleUserInformation();
@@ -324,21 +328,21 @@ public class ProfileFragment extends Fragment {
         mRecyclerViewPostsProfile = rootView.findViewById(R.id.recycle_my_posts);
         progressBar = rootView.findViewById(R.id.progressbar_profile);
         btnEditPic = rootView.findViewById(R.id.btn_edit_image);
-        fabProfile = rootView.findViewById(R.id.fab_profile);
+        btnEditProfile = rootView.findViewById(R.id.btn_edit_info);
+//        fabEditInformation = rootView.findViewById(R.id.fab_profile);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public boolean isOnline() {
-        ConnectivityManager cm = (ConnectivityManager) Objects.requireNonNull(getActivity()).getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager cm = null;
+        cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         assert cm != null;
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    void displayUserInformation() {
+    public void displayUserInformation() {
         if (isOnline()) {
-            uId = Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid();
+            uId = firebaseAuth.getCurrentUser().getUid();
             databaseReference.child("UsersInformation").child("Users")
                     .child(uId).addValueEventListener(userInformationListener);
         } else {
@@ -353,7 +357,6 @@ public class ProfileFragment extends Fragment {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @SuppressLint("SetTextI18n")
     void saveAndReviewUserInformation(final UserInformation userInformation) {
         assert userInformation != null;
@@ -371,12 +374,13 @@ public class ProfileFragment extends Fragment {
         }
         if (!avatar.equals("")) {
             Picasso.with(getContext()).load(avatar).into(imageViewProfilePic);
-            dbHelper.clearTable();
+            dbHelper.clearUsersInformationTable();
             getImageAsBitmap(userInformation);
+
         } else {
             textViewProfilePic.setText(name.charAt(0) + "");
-            dbHelper.clearTable();
-            dbHelper.insert(userInformation);
+            dbHelper.clearUsersInformationTable();
+            dbHelper.insertUsersInformation(userInformation);
             progressBar.setVisibility(View.INVISIBLE);
         }
     }
@@ -399,7 +403,7 @@ public class ProfileFragment extends Fragment {
             Bitmap myBitmapAgain = decodeBase64(avatar);
             imageViewProfilePic.setImageBitmap(myBitmapAgain);
         } else {
-            textViewProfilePic.setText(name.charAt(0) + "");
+            textViewProfilePic.setText(txtProfilePic);
         }
         progressBar.setVisibility(View.INVISIBLE);
     }
@@ -421,7 +425,6 @@ public class ProfileFragment extends Fragment {
                     userChosenTask = "Choose from Library";
                     if (result)
                         galleryIntent();
-
                 } else if (items[item].equals("Cancel")) {
                     dialog.dismiss();
                 }
@@ -462,21 +465,23 @@ public class ProfileFragment extends Fragment {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
             selectedImage = data.getData();
             if (requestCode == SELECT_FILE) {
-                onSelectFromGalleryResult(data);
+                if (selectedImage.getPath().contains("image")) {
+                    onSelectFromGalleryResult(data);
+                } else {
+                    Toast.makeText(getContext(), "imge only", Toast.LENGTH_SHORT).show();
+                }
+
             } else if (requestCode == REQUEST_CAMERA) {
                 onCaptureImageResult(data);
-
             }
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void onSelectFromGalleryResult(Intent data) {
         Bitmap bm = null;
         if (data != null) {
@@ -494,7 +499,6 @@ public class ProfileFragment extends Fragment {
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void onCaptureImageResult(Intent data) {
         Bundle extras = data.getExtras();
         Bitmap imageBitmap = (Bitmap) extras.get("data");
@@ -506,18 +510,15 @@ public class ProfileFragment extends Fragment {
     }
 
     public void UploadBitmap(Bitmap bitmap) {
-        if (bitmap.getByteCount() < 3000000) {
-            progressBar.setVisibility(View.VISIBLE);
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-            byte[] data = baos.toByteArray();
-            imageRef = storageRef.child(firebaseAuth.getCurrentUser().getUid() + ".jpg");
-            uploadTask = imageRef.putBytes(data);
-            uploadTaskOnSuccessListener();
-            progressBar.setVisibility(View.INVISIBLE);
-        } else {
-            Toast.makeText(getContext(), "high image", Toast.LENGTH_SHORT).show();
-        }
+        progressBar.setVisibility(View.VISIBLE);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] data = baos.toByteArray();
+        imageRef = storageRef.child(firebaseAuth.getCurrentUser().getUid() + ".jpg");
+        uploadTask = imageRef.putBytes(data);
+        uploadTaskOnSuccessListener();
+        progressBar.setVisibility(View.INVISIBLE);
+
     }
 
     void uploadTaskOnSuccessListener() {
@@ -557,7 +558,6 @@ public class ProfileFragment extends Fragment {
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     void getImageAsBitmap(final UserInformation userInformation) {
         ImageRequest imageRequest = new ImageRequest(
                 userInformation.getAvatar(), // Image URL
@@ -572,7 +572,7 @@ public class ProfileFragment extends Fragment {
                         String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
                         userInformation.setAvatar(encoded);
                         //the solution is delete all contacts if connected
-                        dbHelper.insert(userInformation);
+                        dbHelper.insertUsersInformation(userInformation);
                         progressBar.setVisibility(View.INVISIBLE);
                     }
                 },
@@ -589,36 +589,40 @@ public class ProfileFragment extends Fragment {
                     }
                 }
         );
-        Volley.newRequestQueue(Objects.requireNonNull(getContext())).add(imageRequest);
+        Volley.newRequestQueue(getContext()).add(imageRequest);
+
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
     void viewProfilePic() {
-        final Dialog nagDialog = new Dialog(Objects.requireNonNull(getActivity()), android.R.style.Theme_DeviceDefault_Light_Dialog);
-        nagDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        nagDialog.setCancelable(true);
-        nagDialog.setContentView(R.layout.preview_image);
-        Button btnClose = (Button) nagDialog.findViewById(R.id.btnIvClose);
-        ImageView ivPreview = (ImageView) nagDialog.findViewById(R.id.iv_preview_image);
-        ivPreview.setBackgroundDrawable(imageViewProfilePic.getDrawable());
-        if (imageViewProfilePic.getDrawable() == null) {
-            btnClose.setBackgroundResource(R.drawable.met_ic_close);
+        final Dialog nagDialog;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+            nagDialog = new Dialog(Objects.requireNonNull(getActivity()), android.R.style.Theme_DeviceDefault_Light_Dialog);
+            nagDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            nagDialog.setCancelable(true);
+            nagDialog.setContentView(R.layout.preview_image);
+            Button btnClose = (Button) nagDialog.findViewById(R.id.btnIvClose);
+            ImageView ivPreview = (ImageView) nagDialog.findViewById(R.id.iv_preview_image);
+            ivPreview.setBackgroundDrawable(imageViewProfilePic.getDrawable());
+            if (imageViewProfilePic.getDrawable() == null) {
+                btnClose.setBackgroundResource(R.drawable.met_ic_close);
+            }
+            ivPreview.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+            btnClose.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View arg0) {
+
+                    nagDialog.dismiss();
+                }
+            });
+            nagDialog.show();
         }
-        ivPreview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
-        btnClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-
-                nagDialog.dismiss();
-            }
-        });
-        nagDialog.show();
     }
 
     public static Bitmap decodeBase64(String input) {

@@ -74,7 +74,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
-                        android:textColorHint="#FFF">
+                        android:textColorHint="@color/colorAccent"
+                        android:textColor="@color/colorPrimaryDark">
 
                         <EditText
                             android:id="@+id/edit_email"
@@ -83,6 +84,7 @@
                             android:layout_marginTop="1dp"
                             android:background="@drawable/selectorbgedit"
                             android:hint="@string/email"
+
                             android:inputType="textEmailAddress"
                             android:maxLines="1"
                             android:gravity="start"
@@ -98,7 +100,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/txt_input1"
                         android:layout_marginTop="10dp"
-                        android:textColorHint="#FFF">
+                        android:textColorHint="@color/colorAccent"
+                        android:textColor="@color/colorPrimaryDark">
 
                         <EditText
                             android:id="@+id/edit_password"
@@ -121,7 +124,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/txt_input2"
                         android:layout_marginTop="10dp"
-                        android:textColorHint="#FFF">
+                        android:textColorHint="@color/colorAccent"
+                        android:textColor="@color/colorPrimaryDark">
 
                         <EditText
                             android:id="@+id/edit_confirm_password"
@@ -129,7 +133,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="1dp"
                             android:background="@drawable/selectorbgedit"
-                            android:hint="Confirm Password"
+                            android:hint="@string/confirm_password"
                             android:gravity="start"
                             android:inputType="textPassword"
                             android:padding="8dp"
@@ -159,10 +163,10 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/city_spinner"
                         android:layout_marginTop="15dp"
-                        android:background="@drawable/btn_bg"
+                        android:background="@drawable/btn_bg3"
                         android:padding="10dp"
                         android:text="@string/sign_up"
-                        android:textColor="@color/red"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
                     <TextView
                         android:id="@+id/txtor"
@@ -218,7 +222,7 @@
                         android:textSize="18sp"
                         tools:ignore="RtlCompat" />
 
-                    <com.twitter.sdk.android.core.identity.TwitterLoginButton
+                    <Button
                         android:id="@+id/twitter_login"
                         android:layout_width="50dp"
                         android:layout_height="50dp"

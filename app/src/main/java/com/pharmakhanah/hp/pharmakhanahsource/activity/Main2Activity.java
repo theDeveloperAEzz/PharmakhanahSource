@@ -1,5 +1,6 @@
 package com.pharmakhanah.hp.pharmakhanahsource.activity;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -17,6 +18,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,6 +40,11 @@ import java.util.Objects;
 public class Main2Activity extends AppCompatActivity {
 
     ViewPager viewPager;
+    FloatingActionButton fabEditInformation;
+    private ArrayList englishGov;
+    private ArrayList arabicGov;
+    private String name;
+    private String phone;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,25 +53,27 @@ public class Main2Activity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        // Setting ViewPager for each Tabs
         viewPager = (ViewPager) findViewById(R.id.container);
         setupViewPager(viewPager);
-        fab();
+        viewPager.setScrollbarFadingEnabled(true);
+
         final TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
-        tabs.getTabAt(3).setIcon(R.mipmap.ic_notifay4);
+        tabs.getTabAt(3).setIcon(R.mipmap.ic_no_notify);
+
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tab.getText() == "") {
-                    tab.setIcon(R.mipmap.ic_notification);
+                    tab.setIcon(R.mipmap.ic_notify_tab);
                 }
+
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
                 if (tab.getText() == "") {
-                    tab.setIcon(R.mipmap.ic_notifay4);
+                    tab.setIcon(R.mipmap.ic_no_notify);
                 }
             }
 
@@ -76,45 +85,9 @@ public class Main2Activity extends AppCompatActivity {
 
     }
 
-   public  void fab() {
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                switch (position) {
-                    case 0:
-                        ProfileFragment.fabProfile.show();
-                        HomeFragment.fabHome.hide();
-                        break;
-                    case 1:
-                        ProfileFragment.fabProfile.hide();
-                        HomeFragment.fabHome.show();
-                        break;
-                    case 2:
-                        HomeFragment.fabHome.hide();
-                        break;
 
 
-                }
 
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-
-    }
-
-//    public void logout(View view) {
-//        LoginManager.getInstance().logOut();
-//        goLoginScreen();
-//    }
 
     private void goLoginScreen() {
         Intent intent = new Intent(this, LoginActivity.class);
@@ -171,15 +144,11 @@ public class Main2Activity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
         if (id == R.id.sign_out) {
             if (isOnline()) {
                 DBHelper dbHelper = new DBHelper(getApplicationContext());
-                dbHelper.clearTable();
+                dbHelper.clearUsersInformationTable();
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 finish();

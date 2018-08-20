@@ -32,7 +32,7 @@
 
             <gradient
                 android:angle="270"
-                android:endColor="#e00416" />
+                android:endColor="@color/colorAccent" />
 
         </shape>
     </item>

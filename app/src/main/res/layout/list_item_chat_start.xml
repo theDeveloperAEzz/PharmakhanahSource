@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/name_user"
                 android:padding="5dp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/red1"
                 android:textStyle="bold|italic"
                 tools:ignore="RtlCompat" />
 
@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvMessage"
                 android:padding="5dp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/red1"
                 android:textSize="12dp"
                 tools:ignore="RtlCompat" />
         </RelativeLayout>

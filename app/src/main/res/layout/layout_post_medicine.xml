@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/login_card"
+            style="@style/SelectableItemTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardElevation="3dp"
+            tools:ignore="KeyboardInaccessibleWidget,ObsoleteLayoutParam">
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:id="@+id/author_txt_profile_pic"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/circle_shape"
+                    app:layout_collapseMode="parallax"
+                    app:layout_collapseParallaxMultiplier="-1"
+                    tools:ignore="RtlCompat" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/author_pic"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_margin="15dp"
+                    android:src="@drawable/test_image"
+                    app:civ_border_color="#FF000000"
+                    app:layout_collapseMode="parallax"
+                    app:layout_collapseParallaxMultiplier="-1"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/author_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/author_pic"
+                    android:layout_toEndOf="@id/author_pic"
+                    android:text="Ahmed ezz"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    tools:ignore="RtlCompat" />
+
+
+                <TextView
+                    android:id="@+id/author_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/author_name"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@id/author_pic"
+                    android:text="cairo"
+                    android:textColor="@color/blue"
+                    android:textSize="13sp"
+                    tools:ignore="RtlCompat" />
+
+
+
+
+
+                <AutoCompleteTextView
+                    android:id="@+id/edit_choose_medicine_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/author_pic"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/edittextboder"
+                    android:gravity="center"
+                    android:hint="@string/post_medicine"
+                    android:padding="5dp"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:visibility="invisible"
+                    tools:ignore="RtlCompat" />
+                <View
+                    android:id="@+id/view15"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_above="@+id/edit_choose_medicine_name"
+                    android:background="#D3D3D3"
+                    tools:ignore="UnknownIdInLayout" />
+
+                <TextView
+                    android:id="@+id/text_check_connection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/author_pic"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/edittextboder"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:visibility="invisible"
+                    tools:ignore="RtlCompat" />
+                <TextView
+                    android:id="@+id/text_loading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/author_pic"
+                    android:background="@drawable/edittextboder"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="@string/loading"
+                    android:textSize="18sp"
+                    android:visibility="invisible"
+                    tools:ignore="RtlCompat" />
+
+
+                <View
+                    android:id="@+id/view14"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/edit_choose_medicine_name"
+                    android:background="#D3D3D3"
+                    tools:ignore="UnknownIdInLayout" />
+
+                <ProgressBar
+                    android:id="@+id/progressbar_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/author_pic"
+                    android:layout_alignTop="@id/view15"
+                    android:layout_alignBottom="@id/view14"
+                    android:layout_marginTop="8dp"
+                    style="?android:attr/progressBarStyleLarge"
+                    android:background="@drawable/progress_circle"
+                    android:progress="50"
+                    />
+                <TextView
+                    android:id="@+id/txt_production_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/view14"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/production_date"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    tools:ignore="RtlCompat" />
+
+                <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                    android:id="@+id/spinner_production_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/txt_production_date"
+                    android:layout_marginStart="15dp"
+                    android:hint="@string/year"
+                    android:textColor="#000"
+                    android:textSize="12sp"
+                    tools:ignore="RtlCompat" />
+
+                <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                    android:id="@+id/spinner_production_date_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_production_date"
+                    android:layout_marginStart="15dp"
+                    android:layout_toEndOf="@id/spinner_production_date"
+                    android:hint="@string/month"
+                    android:textColor="#000"
+                    android:textSize="12sp"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/txt_expiration_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/spinner_production_date_month"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/exp_date"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    tools:ignore="RtlCompat" />
+
+                <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                    android:id="@+id/spinner_expiration_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/txt_expiration_date"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:hint="@string/year"
+                    android:textColor="#000"
+                    android:textSize="12sp"
+                    tools:ignore="RtlCompat" />
+
+                <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                    android:id="@+id/spinner_expiration_date_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_expiration_date"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toEndOf="@+id/spinner_expiration_date"
+                    android:hint="@string/month"
+                    android:textColor="#000"
+                    android:textSize="12sp"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/txt_shelf_life"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/spinner_expiration_date_month"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/shelf_life"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/shelf_life"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/txt_shelf_life"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@id/txt_production_date"
+                    android:hint="@string/shelf_life"
+                    android:textColor="@color/blue"
+                    android:textSize="12sp"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/txt_dosage_form"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/txt_shelf_life"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/dosage_form"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/dosage_form"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/txt_dosage_form"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@id/txt_production_date"
+                    android:hint="@string/dosage_form"
+                    android:textColor="#000"
+                    android:textSize="12sp"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/txt_package_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/txt_dosage_form"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/package_type"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/package_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/txt_package_type"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@id/txt_production_date"
+                    android:hint="@string/package_type"
+                    android:textColor="#000"
+                    android:textSize="12sp"
+                    tools:ignore="RtlCompat" />
+
+
+                <View
+                    android:id="@+id/view12"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/package_type"
+                    android:layout_marginTop="10dp"
+                    android:background="#D3D3D3" />
+
+                <LinearLayout
+                    android:id="@+id/linear"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/view12"
+                    android:layout_margin="5dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_post"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_bg2"
+                        android:text="@string/post"
+                        android:textColor="#000"
+                        tools:ignore="RtlCompat" />
+
+                    <Button
+                        android:id="@+id/btn_cancel"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_bg"
+                        android:text="@string/cancel"
+                        android:textColor="#000"
+                        tools:ignore="RtlCompat" />
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_below="@+id/linear"
+                    android:background="#D3D3D3" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+    </ScrollView>
+
+
+</RelativeLayout>

@@ -20,9 +20,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="-7dp"
-        android:backgroundTint="#FFF"
+        android:backgroundTint="@color/colorPrimary"
         android:indeterminate="true"
-        android:indeterminateTint="#1a09d6"
+        android:indeterminateTint="@color/blue"
         android:max="100"
         android:visibility="invisible" />
 
@@ -64,7 +64,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    tools:ignore="UselessParent">
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/txt_input1"
@@ -79,13 +80,13 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="1dp"
                             android:background="@drawable/selectorbgedit"
-                            android:hint="Email"
+                            android:hint="@string/email"
                             android:inputType="textEmailAddress"
                             android:maxLines="1"
                             android:padding="8dp"
 
                             android:textCursorDrawable="@drawable/bginputcursor"
-                            android:textSize="15dp" />
+                            android:textSize="15sp" />
                     </android.support.design.widget.TextInputLayout>
 
                     <RelativeLayout
@@ -111,12 +112,12 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="1dp"
                                 android:background="@drawable/selectorbgedit"
-                                android:hint="Password"
+                                android:hint="@string/password"
                                 android:inputType="textPassword"
                                 android:maxLines="1"
                                 android:padding="8dp"
                                 android:textCursorDrawable="@drawable/bginputcursor"
-                                android:textSize="15dp">
+                                android:textSize="15sp">
 
                             </EditText>
 
@@ -126,7 +127,7 @@
                             android:id="@+id/check_show_password"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             tools:ignore="RtlCompat" />
                     </RelativeLayout>
@@ -139,7 +140,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_below="@+id/line1"
                         android:layout_marginTop="10dp"
-                        android:text="remember me "
+                        android:text="@string/remember_me"
                         tools:ignore="NotSibling,RtlCompat" />
 
                     <TextView
@@ -151,11 +152,12 @@
                         android:layout_marginTop="5dp"
                         android:clickable="true"
                         android:gravity="bottom"
-                        android:text="Reset password !"
+                        android:text="@string/reset_password"
                         android:textColor="#fff"
-                        android:textSize="20dp"
+                        android:textSize="20sp"
                         android:textStyle="bold"
-                        tools:ignore="NotSibling,RtlCompat" />
+                        tools:ignore="NotSibling,RtlCompat"
+                        android:focusable="true" />
 
                     <Button
                         android:id="@+id/btn_login"
@@ -167,9 +169,10 @@
                         android:clickable="true"
                         android:padding="10dp"
 
-                        android:text="Log in"
-                        android:textColor="@color/red"
-                        android:textSize="18dp" />
+                        android:text="@string/log_in"
+                        android:textColor="@color/red2"
+                        android:textSize="18sp"
+                        android:focusable="true" />
 
                     <TextView
                         android:id="@+id/txt2"
@@ -179,8 +182,9 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:clickable="true"
-                        android:text="Not Account Yet?"
-                        android:textColor="#fff" />
+                        android:text="@string/not_account_yet"
+                        android:textColor="#fff"
+                        android:focusable="true" />
 
                     <Button
                         android:id="@+id/btn_register"
@@ -191,9 +195,10 @@
                         android:background="@drawable/btn_bg2"
                         android:clickable="true"
                         android:padding="10dp"
-                        android:text="Sign up"
+                        android:text="@string/sign_up"
                         android:textColor="#fff"
-                        android:textSize="18dp" />
+                        android:textSize="18sp"
+                        android:focusable="true" />
                 </RelativeLayout>
 
             </FrameLayout>

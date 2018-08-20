@@ -3,13 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="418dp"
+    android:layout_height="wrap_content"
     android:background="#fff">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:ignore="UselessParent">
+
 
         <android.support.v7.widget.CardView
             android:id="@+id/login_card"
@@ -19,7 +16,6 @@
             android:layout_margin="5dp"
             android:clickable="true"
             app:cardBackgroundColor="@android:color/transparent"
-            app:cardElevation="3dp"
             tools:ignore="KeyboardInaccessibleWidget,ObsoleteLayoutParam">
 
             <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -30,8 +26,8 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/author_pic"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_alignParentStart="true"
                     android:layout_margin="15dp"
                     android:src="@drawable/test_image"
@@ -48,7 +44,7 @@
                     android:layout_toEndOf="@id/author_pic"
                     android:text="Ahmed ezz"
                     android:textColor="#000"
-                    android:textSize="22dp"
+                    android:textSize="15sp"
                     tools:ignore="RtlCompat" />
 
                 <TextView
@@ -59,8 +55,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_toEndOf="@id/author_pic"
                     android:text="today 6:14 pm"
-                    android:textSize="12sp"
                     android:textColor="#000"
+                    android:textSize="10sp"
                     tools:ignore="RtlCompat" />
 
                 <TextView
@@ -73,48 +69,52 @@
                     android:layout_toEndOf="@id/author_pic"
                     android:text="cairo"
                     android:textColor="#000"
-                    android:textSize="12sp"
+                    android:textSize="10sp"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/how_many_likes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignBottom="@+id/author_name"
+                    android:paddingBottom="5dp"
+                    android:gravity="center|bottom"
+                    android:paddingEnd="10dp"
+                    android:text="100 likes"
+                    android:textColor="#000"
+                    android:textSize="10sp"
                     tools:ignore="RtlCompat" />
 
                 <View
                     android:id="@+id/view13"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_above="@+id/scrollView"
+                    android:layout_below="@id/author_pic"
                     android:background="#D3D3D3"
                     tools:ignore="UnknownIdInLayout" />
 
-                <ScrollView
-                    android:id="@+id/scrollView"
+
+                <TextView
+                    android:id="@+id/txt_summary"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@id/author_pic"
-                    android:layout_margin="5dp"
-                    android:elevation="4dp">
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:scrollbars="vertical"
+                    android:text="@string/i_wish_you_healing"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    tools:ignore="RtlCompat" />
 
-                    <TextView
-                        android:id="@+id/txt_summary"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_below="@id/author_pic"
-                        android:layout_centerHorizontal="true"
-                        android:elevation="4dp"
-                        android:gravity="start"
-                        android:hint="Wish them healing"
-                        android:padding="5dp"
-                        android:scrollbars="vertical"
-                        android:text="I wish you healing"
-                        android:textColor="#000000"
-                        android:textSize="12dp"
-                        tools:ignore="RtlCompat" />
-
-                </ScrollView>
 
                 <View
                     android:id="@+id/view14"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_below="@+id/scrollView"
+                    android:layout_below="@+id/txt_summary"
                     android:background="#D3D3D3"
                     tools:ignore="UnknownIdInLayout" />
 
@@ -123,66 +123,101 @@
                     android:id="@+id/author_medicine_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/scrollView"
+                    android:layout_below="@id/txt_summary"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="5dp"
-                    android:text="kataphlam"
+                    android:padding="3dp"
+                    android:gravity="center"
+                    android:text="kataphlamkataphlamkataphlamkataphlamkataphlamkataphlamkataphlamkataphlamkataphlamkataphlamkataphlamkataphlam"
                     android:textColor="#000"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/author_production_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/author_medicine_name"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Pro.Date:1/8/2018"
+                    android:textColor="#000"
+                    android:textSize="12sp"
                     tools:ignore="RtlCompat" />
 
                 <TextView
                     android:id="@+id/author_expiration_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/author_medicine_name"
-                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/author_production_date"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="5dp"
                     android:text="Exp.Date:1/8/2018"
                     android:textColor="#000"
-                    android:textSize="15dp"
+                    android:textSize="12sp"
                     tools:ignore="RtlCompat" />
 
                 <TextView
-                    android:id="@+id/author_quantity"
+                    android:id="@+id/author_shelf_life"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
                     android:layout_below="@id/author_expiration_date"
-                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="5dp"
-                    android:text="3 bar and tray"
+                    android:text="@string/shelf_life"
                     android:textColor="#000"
-                    android:textSize="15dp"
+                    android:textSize="12sp"
                     tools:ignore="RtlCompat" />
+
+
+                <TextView
+                    android:id="@+id/author_dosage_form"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/author_medicine_name"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/dosage_form"
+                    android:textColor="#000"
+                    android:textSize="12sp"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/author_package_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/author_dosage_form"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/package_type"
+                    android:textColor="#000"
+                    android:textSize="12sp"
+                    tools:ignore="RtlCompat" />
+
 
                 <ImageView
                     android:id="@+id/author_medicine_image"
-                    android:layout_width="100dp"
-                    android:layout_height="80dp"
-                    android:layout_below="@id/author_quantity"
+                    android:layout_width="80dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/author_medicine_name"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
-                    android:background="@drawable/b" />
-
-                <TextView
-                    android:id="@+id/how_many_likes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_below="@+id/author_medicine_image"
-                    android:paddingBottom="5dp"
-                    android:paddingEnd="20dp"
-                    android:text="100 likes"
-                    android:textColor="#000"
-                    android:textSize="12dp"
+                    android:background="@drawable/a"
                     tools:ignore="RtlCompat" />
+
 
                 <View
                     android:id="@+id/view12"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_below="@+id/how_many_likes"
+                    android:layout_below="@+id/author_shelf_life"
+                    android:layout_marginTop="5dp"
                     android:background="#D3D3D3" />
 
                 <LinearLayout
@@ -214,7 +249,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_click_chat"
-                        android:src="@mipmap/ic_goto_chat3" />
+                        android:src="@mipmap/ic_goto_chat1" />
 
                     <ImageButton
                         android:id="@+id/btn_like"
@@ -225,7 +260,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_click_chat"
-                        android:src="@mipmap/ic_after_like1" />
+                        android:src="@mipmap/ic_before_like1" />
 
 
                 </LinearLayout>
@@ -233,13 +268,12 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="5dp"
+                    android:layout_height="1dp"
                     android:layout_below="@+id/linear"
-                    android:background="#D3D3D3" />
+                    android:background="#000" />
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
-    </ScrollView>
 
 
 </RelativeLayout>

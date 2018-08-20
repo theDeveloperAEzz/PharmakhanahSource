@@ -36,41 +36,41 @@
             <item>المنيا</item>
             <item>الوادي الجديد</item>
         </string-array>
-        <string-array name="englishGov">
-            <item>Alexandria</item>
-            <item>Aswan</item>
-            <item>Asyut</item>
-            <item>Beheira</item>
-            <item>Beni Suef</item>
-            <item>Cairo</item>
-            <item>Dakahlia</item>
-            <item>Damietta</item>
-            <item>Faiyum</item>
-            <item>Gharbia</item>
-            <item>Giza</item>
-            <item>Ismailia</item>
-            <item>Kafr ElSheikh</item>
-            <item>Luxor</item>
-            <item>Matruh</item>
-            <item>Minya</item>
-            <item>Monufia</item>
-            <item>New Valley</item>
-            <item>North Sinai</item>
-            <item>Port Said</item>
-            <item>Qalyubia</item>
-            <item>Qena</item>
-            <item>Red Sea</item>
-            <item>Sharqia</item>
-            <item>Sohag</item>
-            <item>South Sinai</item>
-            <item>Suez</item>
-        </string-array>
+    <string-array name="englishGov">
+        <item>Alexandria</item>
+        <item>Aswan</item>
+        <item>Asyut</item>
+        <item>Beheira</item>
+        <item>Beni Suef</item>
+        <item>Cairo</item>
+        <item>Dakahlia</item>
+        <item>Damietta</item>
+        <item>Faiyum</item>
+        <item>Gharbia</item>
+        <item>Giza</item>
+        <item>Ismailia</item>
+        <item>Kafr ElSheikh</item>
+        <item>Luxor</item>
+        <item>Matruh</item>
+        <item>Minya</item>
+        <item>Monufia</item>
+        <item>New Valley</item>
+        <item>North Sinai</item>
+        <item>Port Said</item>
+        <item>Qalyubia</item>
+        <item>Qena</item>
+        <item>Red Sea</item>
+        <item>Sharqia</item>
+        <item>Sohag</item>
+        <item>South Sinai</item>
+        <item>Suez</item>
+    </string-array>
+
     <string name="com.twitter.sdk.android.CONSUMER_KEY" translatable="false">AFeSI9OX3uyUjvFmJwOGBmq98</string>
     <string name="com.twitter.sdk.android.CONSUMER_SECRET" translatable="false">hWwp3lvwYdRf98IsQIgHMgsUTAuIVmm62SZP3UHlIP0nQAZKIL</string>
     <string name="you_have_not_posts_yet">you have not posts yet.</string>
     <string name="phone_hint">01-000000000</string>
     <string name="click_to_change_your_photo">click to change your photo.</string>
-    <string name="edit">edit</string>
     <string name="no_posts_added_yet">no posts added yet.</string>
     <string name="no_chats_yet">no chats yet.</string>
     <string name="no_notifications_yet">no notifications yet.</string>
@@ -81,13 +81,34 @@
     <string name="edit_your_information">Edit your Information</string>
     <string name="chose_your_city">chose your city</string>
     <string name="password">Password</string>
-    <string name="email">Email</string>
-    <string name="sign_up">Sign up</string>
     <string name="or">or</string>
     <string name="fb">fb</string>
     <string name="tw">tw</string>
     <string name="g">g+</string>
     <string name="long_click_to_delete">long click to delete</string>
+    <string name="year">select year</string>
+    <string name="exp_date">Expiration date</string>
+    <string name="post_medicine">post medicine</string>
+    <string name="production_date">Production date</string>
+    <string name="shelf_life">Shelf life</string>
+    <string name="dosage_form">Dosage form</string>
+    <string name="package_type">Package type</string>
+    <string name="post">Post</string>
+    <string name="cancel">Cancel</string>
+    <string name="shelf_month"> month</string>
+    <string name="check_connection">check connection</string>
+    <string name="month">select month</string>
+    <string name="i_wish_you_healing">I wish you healing</string>
+    <string name="edit">edit</string>
+    <string name="what_medicine_will_you_donate_to_them">What medicine will you donate to them? :)</string>
+    <string name="sign_up">Sign up</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="remember_me">remember me</string>
+    <string name="reset_password">Reset password !</string>
+    <string name="log_in">Log in</string>
+    <string name="not_account_yet">Not Account Yet?</string>
+    <string name="email">Email</string>
+    <string name="loading">Loading...</string>
 </resources>
 
 

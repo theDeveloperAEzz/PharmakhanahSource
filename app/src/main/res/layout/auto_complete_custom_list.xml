@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#fff">
+
+    <TextView
+        android:id="@+id/medicine_name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/red1"
+        android:textSize="15sp"
+        tools:ignore="RtlCompat" />
+    <TextView
+        android:id="@+id/package_type_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:textSize="12sp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/medicine_name_text"
+        android:text="@string/package_type"
+        tools:ignore="RtlCompat" />
+    <TextView
+        android:id="@+id/dosage_form_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:textSize="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/package_type_text"
+        android:text="@string/dosage_form"
+        tools:ignore="RtlCompat" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/dosage_form_text"/>
+
+</RelativeLayout>

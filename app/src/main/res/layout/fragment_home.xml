@@ -1,49 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
-    android:padding="15dp">
+    android:background="@color/colorPrimary">
 
-    <android.support.v4.widget.SwipeRefreshLayout
+
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp">
+        android:layout_gravity="fill_vertical"
+        android:fillViewport="true"
+        android:scrollbars="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycle_posts_home"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_gravity="fill_vertical"
+            android:descendantFocusability="blocksDescendants">
 
-        </android.support.v7.widget.RecyclerView>
+            <TextView
+                android:id="@+id/txt_post_medicine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/btn_bg4"
+                android:gravity="center"
+                android:text="@string/what_medicine_will_you_donate_to_them" />
 
-    </android.support.v4.widget.SwipeRefreshLayout>
+            <View
+                android:id="@+id/view4"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_below="@+id/txt_post_medicine"
+                android:background="@color/gray2" />
 
-    <TextView
-        android:id="@+id/txt_no_posts_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="15dp"
-        android:text="@string/no_posts_added_yet"
-        android:textColor="#999"
-        android:textSize="18sp"
-        android:visibility="visible" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="@dimen/fab_margin"
-        android:clickable="true"
-        android:focusable="true"
-        app:backgroundTint="@color/colorPrimary"
-        app:elevation="7dp"
-        app:fabSize="normal"
-        tools:ignore="RtlCompat" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycle_posts_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view4"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp">
 
-</RelativeLayout>
+            </android.support.v7.widget.RecyclerView>
+
+
+            <TextView
+                android:id="@+id/txt_no_posts_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/no_posts_added_yet"
+                android:textSize="18sp"
+                android:visibility="visible" />
+
+
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+</android.support.v4.widget.SwipeRefreshLayout>
